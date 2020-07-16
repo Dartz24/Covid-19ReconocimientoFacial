@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Covid_19ReconocimientoFacial
 {
-    public partial class Form1 : Form
+    public partial class RegistroPaciente : Form
     {
 
         #region Variables
@@ -41,7 +41,7 @@ namespace Covid_19ReconocimientoFacial
 
 
 
-        public Form1()
+        public RegistroPaciente()
         {
             InitializeComponent();
         }

@@ -16,7 +16,7 @@ namespace Covid_19ReconocimientoFacial
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistrarPaciente());
+            Application.Run(new RegistroPaciente());
         }
     }
 }

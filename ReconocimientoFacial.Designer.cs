@@ -1,6 +1,6 @@
 ﻿namespace Covid_19ReconocimientoFacial
 {
-    partial class Form2
+    partial class ReconocimientoFacial
     {
         /// <summary>
         /// Required designer variable.
@@ -66,7 +66,7 @@
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // Form2
+            // ReconocimientoFacial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -75,7 +75,7 @@
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
-            this.Name = "Form2";
+            this.Name = "ReconocimientoFacial";
             this.Text = "Form2";
             this.ResumeLayout(false);
 

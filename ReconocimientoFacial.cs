@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Covid_19ReconocimientoFacial
 {
-    public partial class Form2 : Form
+    public partial class ReconocimientoFacial : Form
     {
-        public Form2()
+        public ReconocimientoFacial()
         {
             InitializeComponent();
         }

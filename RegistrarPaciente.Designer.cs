@@ -1,6 +1,6 @@
 ﻿namespace Covid_19ReconocimientoFacial
 {
-    partial class Form1
+    partial class RegistroPaciente
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -71,14 +71,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // RegistroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 827);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "RegistroPaciente";
             this.Text = "Registro del Paciente Covid-19";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
