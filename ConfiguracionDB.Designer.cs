@@ -26,8 +26,9 @@ namespace Covid_19ReconocimientoFacial {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-64FO4SU;Initial Catalog=ReconocimientoFacial;Integrated Secur" +
-            "ity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ingenieriadesarrollo.database.windows.net;Initial Catalog=Reconocimie" +
+            "ntoFacial;Persist Security Info=True;User ID=bpaul573;Password=Desarrolloingenie" +
+            "ria001")]
         public string conexion {
             get {
                 return ((string)(this["conexion"]));
