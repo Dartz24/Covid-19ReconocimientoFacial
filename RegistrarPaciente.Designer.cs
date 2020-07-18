@@ -55,6 +55,9 @@
             this.pictureBox1.Size = new System.Drawing.Size(853, 591);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // button1
             // 
@@ -80,6 +83,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistroPaciente";
             this.Text = "Registro del Paciente Covid-19";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistroPaciente_FormClosing);
+            this.Load += new System.EventHandler(this.RegistroPaciente_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -45,5 +45,17 @@ namespace Covid_19ReconocimientoFacial
             textBox_emil.Text = usuario.Email;
             dateTimePicker_fechaNacimiento.Value = usuario.FechaNacimiento;
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            usuario.Cedula = textBox_cedula.Text;
+            usuario.Nombre = textBox_nombre.Text;
+            usuario.Apellido = textBox_apellido.Text;
+            usuario.Email = textBox_emil.Text;
+            usuario.Telefono = textBox_telefono.Text;
+            usuario.FechaNacimiento = dateTimePicker_fechaNacimiento.Value;
+
+            this.Close();
+        }
     }
 }

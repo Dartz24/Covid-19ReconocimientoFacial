@@ -30,7 +30,7 @@ namespace Covid_19ReconocimientoFacial
                                           ,[email]
                                           ,[fechaNacimiento]
                                           ,[imagen]
-                                      FROM [dbo].[Empleado]";
+                                      FROM [dbo].[Paciente]";
 
                 using (SqlDataReader reader = sql.ExecuteReader())
                 {
@@ -72,7 +72,7 @@ namespace Covid_19ReconocimientoFacial
                 sql.Connection = conexion;
                 sql.CommandType = CommandType.Text;
 
-                sql.CommandText = @"INSERT INTO [dbo].[Empleado]
+                sql.CommandText = @"INSERT INTO [dbo].[Paciente]
                                                    ([nombre]
                                                    ,[apellido]
                                                    ,[cedula]
@@ -134,7 +134,7 @@ namespace Covid_19ReconocimientoFacial
 
                 //if (actualizaFoto)
                 //{
-                sql.CommandText = @"UPDATE [dbo].[Empleado]
+                sql.CommandText = @"UPDATE [dbo].[Paciente]
                                     SET [nombre] = @nombre
                                           ,[apellido] = @apellido
                                           ,[cedula] = @cedula

@@ -52,6 +52,7 @@ namespace Covid_19ReconocimientoFacial
         }
 
 
+
         private void Capturar()
         {
             this.button1.Enabled = false;
@@ -241,6 +242,7 @@ namespace Covid_19ReconocimientoFacial
 
 
 
+
         /////metodos
         ///
         private Usuario BuscarUsuario(string name)
@@ -264,5 +266,80 @@ namespace Covid_19ReconocimientoFacial
             listaUsuarios = UsuarioDatos.CargarListaUsuario(listaUsuarios);
         }
 
+
+
+        private void Iniciar()
+        {
+
+            if (FSDK.FSDKE_OK != FSDK.ActivateLibrary("gyYgVWQTSzjiuGB/hH8dKgg0QrrIuhoHdfUCzD9rY+vru3WRZsaezTX6YWj9osdI/cmxY1NSdLkyWuugMPCxUG7/xNLegHLeaUpzVyKpDkaWL8tJIUsIL7xv9bhmgifPbAyTDuxF3VGxXmHkv/L/MStf9kdXV/A1vVvT93QC4vQ="))
+            {
+                MessageBox.Show("Please run the License Key Wizard (Start - Luxand - FaceSDK - License Key Wizard)", "Error activating FaceSDK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+
+            FSDK.InitializeLibrary();
+            FSDKCam.InitializeCapturing();
+
+            #region Camaras
+            //VERIFICAR CAMARAS, OBTENER LOS NOMBRE Y LA CANTIDAD DE CAMARAS.
+            string[] cameraList;
+            int count;
+            FSDKCam.GetCameraList(out cameraList, out count);
+
+            if (0 == count)
+            {
+                MessageBox.Show("Please attach a camera", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            cameraName = cameraList[0];
+
+            #endregion
+
+            FSDKCam.VideoFormatInfo[] formatList;
+            FSDKCam.GetVideoFormatList(ref cameraName, out formatList, out count);
+
+            int VideoFormat = 0; // choose a video format
+            pictureBox1.Width = formatList[VideoFormat].Width;
+            pictureBox1.Height = formatList[VideoFormat].Height;
+
+            //Debug.WriteLine("Width: " + pictureBox1.Width);
+            //Debug.WriteLine("Height: " + pictureBox1.Height);
+
+            //this.Width = formatList[VideoFormat].Width + 75;
+            //this.Height = formatList[VideoFormat].Height + 150;
+            //Debug.WriteLine("Width: " + pictureBox1.Width);
+            //Debug.WriteLine("Height: " + pictureBox1.Height);
+
+
+        }
+
+        private void RegistroPaciente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            needClose = true;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            programState = ProgramState.psRemember;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            mouseX = e.X;
+            mouseY = e.Y;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            mouseX = 0;
+            mouseY = 0;
+        }
+
+        private void RegistroPaciente_Load(object sender, EventArgs e)
+        {
+            CargarUsuarioDB();
+            Debug.WriteLine("size: " + listaUsuarios.Count);
+            Iniciar();
+        }
     }
 }
