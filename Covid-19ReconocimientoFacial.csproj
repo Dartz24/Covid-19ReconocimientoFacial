@@ -71,6 +71,12 @@
     <Compile Include="inputDatos.Designer.cs">
       <DependentUpon>inputDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mapa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mapa.Designer.cs">
+      <DependentUpon>Mapa.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
