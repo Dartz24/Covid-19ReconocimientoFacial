@@ -50,5 +50,10 @@ namespace Covid_19ReconocimientoFacial
             ReconocimientoFacial facial = new ReconocimientoFacial();
             AbrirFormEnPanel(facial);
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
