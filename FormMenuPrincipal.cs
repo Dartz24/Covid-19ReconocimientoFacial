@@ -53,7 +53,9 @@ namespace Covid_19ReconocimientoFacial
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            Mapa map = new Mapa();
+            AbrirFormEnPanel(map);
         }
+    
     }
 }

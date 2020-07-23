@@ -57,7 +57,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(712, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1323, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,17 +104,19 @@
             // 
             // panelContenedor
             // 
+            this.panelContenedor.AutoSize = true;
             this.panelContenedor.Controls.Add(this.pictureBox1);
-            this.panelContenedor.Location = new System.Drawing.Point(2, 24);
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(0, 28);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(711, 458);
+            this.panelContenedor.Size = new System.Drawing.Size(1323, 721);
             this.panelContenedor.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(248, 126);
+            this.pictureBox1.Location = new System.Drawing.Point(464, 131);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 256);
@@ -135,13 +137,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 484);
+            this.ClientSize = new System.Drawing.Size(1323, 749);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormMenuPrincipal";
             this.Text = "MENU PRINCIPAL";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelContenedor.ResumeLayout(false);

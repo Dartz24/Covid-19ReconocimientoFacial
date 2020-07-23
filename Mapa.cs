@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 
 namespace Covid_19ReconocimientoFacial
 {
@@ -30,6 +32,19 @@ namespace Covid_19ReconocimientoFacial
             gMapControl1.MaxZoom = 24;
             gMapControl1.Zoom = 9;
             gMapControl1.AutoScroll = true;
+
+
+
+            GMapOverlay markersOverlay = new GMapOverlay("markers");
+            GMarkerGoogle marker =
+                new GMarkerGoogle(
+                 new PointLatLng(-1.242246, -78.629257), GMarkerGoogleType.green);
+            GMarkerGoogle marker1 =
+               new GMarkerGoogle(
+                new PointLatLng(-1.552246, -78.629257), GMarkerGoogleType.green);
+            markersOverlay.Markers.Add(marker);
+                markersOverlay.Markers.Add(marker1);
+            gMapControl1.Overlays.Add(markersOverlay);
         }
     }
 }

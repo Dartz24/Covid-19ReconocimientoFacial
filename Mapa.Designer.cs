@@ -66,6 +66,7 @@
             this.Controls.Add(this.gMapControl1);
             this.Name = "Mapa";
             this.Text = "Mapa";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
