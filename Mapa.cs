@@ -15,7 +15,9 @@ using GMap.NET.WindowsForms.Markers;
 namespace Covid_19ReconocimientoFacial
 {
     public partial class Mapa : Form
-    {
+    {/// <summary>
+    /// 
+    /// </summary>
         public Mapa()
         {
             InitializeComponent();
