@@ -6,9 +6,13 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Media;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mail;
 using System.Windows.Forms;
 
 namespace Covid_19ReconocimientoFacial
@@ -86,6 +90,8 @@ namespace Covid_19ReconocimientoFacial
             textBox_apellido.Text = usuario.Apellido;
             textBox_telefono.Text = usuario.Telefono;
             textBox_email.Text = usuario.Email;
+           
+           
         }
 
         private void LimpiarCampos()
@@ -227,6 +233,7 @@ namespace Covid_19ReconocimientoFacial
                             usuario = BuscarUsuario(name);
                             CarcarCampos(usuario);
                             name = usuario.Nombre + " " + usuario.Apellido;
+                            
                         }
 
                         StringFormat format = new StringFormat();
@@ -343,6 +350,201 @@ namespace Covid_19ReconocimientoFacial
         {
             CargarUsuarioDB();
             Iniciar();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Capturar();
+        }
+
+        private void cerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            //maximizar
+            WindowState = FormWindowState.Maximized;
+            pictureBox4.Visible = false;
+            restaurar.Visible = true;
+        }
+
+        private void minimizar_Click(object sender, EventArgs e)
+        {
+            //minimizar
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void restaurar_Click(object sender, EventArgs e)
+        {
+            //Restaurar
+            WindowState = FormWindowState.Normal;
+            restaurar.Visible = false;
+            pictureBox4.Visible = true;
+        }
+
+        private void Email()
+        {
+            SmtpClient smtp = new SmtpClient();
+            smtp.Port = 587; //puertto smtp google y de gmail
+            smtp.Timeout = 50;
+            smtp.Host = "smtp.live.com";
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            #region Credencial
+            smtp.Credentials = new System.Net.NetworkCredential
+            {
+                UserName = "dartzgotico@hotmail.com", //Usuario Hotmail
+                Password = "19956dartz"   //Contraseña
+            };
+            #endregion
+
+
+            MailAddress from = new MailAddress("dartzgotico@hotmail.com", "Sistema Informatico Reconocimiento Facial Covid-19", Encoding.UTF8);
+
+
+            var listamails = textBox_email.Text.Split(';');
+
+            using (System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage())
+            {
+                message.From = from;
+                message.Subject = "Centro Salud N#2";
+                message.IsBodyHtml = true;
+                message.Priority = System.Net.Mail.MailPriority.High;
+                message.Body = CuerpoMensajeHTML();
+
+                ///creo una vista cuerpo del mensaje                
+
+                AlternateView h2 = AlternateView.CreateAlternateViewFromString(CuerpoMensajeHTML(), Encoding.UTF8
+                    , MediaTypeNames.Text.Html);
+
+                // pongo la imagen en el html creado
+
+
+                LinkedResource img =
+                    new LinkedResource(@"C:\Imagenes\11.png",
+                                        MediaTypeNames.Image.Jpeg);
+                img.ContentId = "imagen";
+
+                // Lo incrustamos en la vista HTML...
+
+                h2.LinkedResources.Add(img);
+
+                message.AlternateViews.Add(h2);
+
+
+
+
+
+                //envio a todod los destinatarios
+                foreach (var item in listamails)
+                {
+
+
+                    try
+                    {
+                        message.To.Add(item);
+                        smtp.Send(message);
+                        message.To.Clear();
+
+                    }
+                    catch (Exception e)
+                    {
+
+                        MessageBox.Show(e.Message);
+                        // LabelMensaje.Text = e.Message;
+                    }
+
+                }
+
+
+                MessageBox.Show("CORREOS ENVIADOS SATISFACTORIAMENTE");
+               // LabelMensaje.Text = "CORREOS ENVIADOS SATISFACTORIAMENTE";
+            }
+
+
+
+            //    SmtpMailoMail = new SmtpMail("TryIt");
+            //    SmtpClientoSmtp = new SmtpClient();//crea objeto de la clase SmtpClient
+            //    oMail.From = new MailAddress("alex39garces@gmail.com"); // email desde donde se enviara el mensaje
+            //    oMail.To.Add(new MailAddress("alex39garces@gmail.com"));// configuracion de email de destino del mensaje
+            //    oMail.Subject = "alerta sistema ecu-911";// configuracion del asunto de recibo del mensaje
+            //    List<string> archivo = new List<string>();
+            //    oMail.TextBody = "una persona buscada ha sido identificada su nombre es: " +
+            //    visitorName1 + "\tla ciudad es:\t" + town.Text + "\tsu GPS es:\t" +
+            //    geolocation.Text + "el nivel de acierto es" + acierto.ToString() + "%" + "\tla calle es:\t" + street.Text;
+            //    Windows.Storage.StorageFile file = currentIdPhotoFile; //se realiza la carga de la foto de la persona buscada para enviarla conjuntamente con las coordenadas
+            //    stringattfile = file.Path;
+            //    AttachmentoAttachment = awaitoMail.AddAttachmentAsync(attfile);//carga el archivo a enviar
+            //    SmtpServeroServer = new SmtpServer("smtp.gmail.com");// configuracion del servidor Gmail SMTP
+            //    oServer.User = "alex39garces@gmail.com";// usuario y password requeridos para la
+            //    autenticacion SMTP
+            //    oServer.Password = "aleks9166garces21";//clave de la cuenta de correo electronico
+            //    oServer.Port = 465;// utiliza el puerto 465
+            //    oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+            //    awaitoSmtp.SendMailAsync(oServer, oMail);
+
+
+
+
+
+        }
+
+
+        private string CuerpoMensajeHTML()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table align='center'>");
+            sb.Append("<tr><td colspan='2' style='background:#F3C145 ' align='center'> Notificación Centro Salud</td></tr>" +
+                              "<center><img align='center' src='cid:imagen'/></center>");
+            sb.Append("<tr><td colspan='2'align='center'  style='background:#F3C145'>Datos Personales</td></tr>");
+            sb.Append("  <tr>");
+            sb.Append("<td>CÉDULA: </td>");
+            sb.Append("<td>" + textBox_cedula.Text + " </td>");
+            sb.Append("  </tr>");
+
+            sb.Append("  <tr>");
+            sb.Append("<td>PACIENTE: </td>");
+            string nombres;
+            nombres = textBox_nombre.Text + " " + textBox_apellido.Text;
+            sb.Append("<td>" + nombres+" </td>");
+            sb.Append("  </tr>");
+
+
+            sb.Append("  <tr>");
+            sb.Append("<td>MOTIVO: </td>");
+            sb.Append("<td>El Paciente esta fuera de su asilamiento, por favor comuniquenos con nosotros lo mas pronto posible</td>");
+            sb.Append("  </tr>");
+
+            sb.Append("  <tr>");
+            sb.Append("<td>ULTIMA UBICACIÓN : </td>");
+            sb.Append("<td>" + textBoxUbicacion.Text + " </td>");
+            sb.Append("  </tr>");
+
+            // sb.Append("<td> </td>");
+
+            sb.Append(" </table>");
+
+
+            return sb.ToString();
+
+        }
+
+
+        void Audio()
+        {
+            var dir = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Sonido/2.wav");
+            SoundPlayer Player = new SoundPlayer();
+            // Player.SoundLocation = "C:/2.wav";
+            Player.SoundLocation = dir;
+             Player.Play();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Audio();
+            Email();
+            
         }
     }
 }

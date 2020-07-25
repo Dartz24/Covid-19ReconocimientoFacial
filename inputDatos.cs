@@ -57,5 +57,37 @@ namespace Covid_19ReconocimientoFacial
 
             this.Close();
         }
+
+        private void cerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void restaurar_Click(object sender, EventArgs e)
+        {
+            //Restaurar
+            WindowState = FormWindowState.Normal;
+            restaurar.Visible = false;
+            pictureBox4.Visible = true;
+        }
+
+        private void minimizar_Click(object sender, EventArgs e)
+        {
+            //minimizar
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            //maximizar
+            WindowState = FormWindowState.Maximized;
+            pictureBox4.Visible = false;
+            restaurar.Visible = true;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

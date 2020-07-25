@@ -288,7 +288,7 @@ namespace Covid_19ReconocimientoFacial
 
             if (0 == count)
             {
-                MessageBox.Show("Please attach a camera", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se dectecta ninguna Camara", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             cameraName = cameraList[0];
@@ -340,6 +340,40 @@ namespace Covid_19ReconocimientoFacial
             CargarUsuarioDB();
             Debug.WriteLine("size: " + listaUsuarios.Count);
             Iniciar();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            //maximizar
+            WindowState = FormWindowState.Maximized;
+            pictureBox4.Visible = false;
+            restaurar.Visible = true;
+            
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //minimizar
+            WindowState = FormWindowState.Minimized;
+           
+        }
+
+        private void PictureBox5_Click(object sender, EventArgs e)
+        {
+            //Restaurar
+            WindowState = FormWindowState.Normal;
+            restaurar.Visible = false;
+            pictureBox4.Visible = true;
+        }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+            Capturar();
         }
     }
 }
