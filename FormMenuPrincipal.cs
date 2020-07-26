@@ -29,7 +29,7 @@ namespace Covid_19ReconocimientoFacial
             fh.Dock = DockStyle.None;
             this.panelContenedor.Controls.Add(fh);
             this.panelContenedor.Tag = fh;
-            
+
             fh.Show();
 
         }
@@ -41,21 +41,78 @@ namespace Covid_19ReconocimientoFacial
 
         private void registroPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //RegistroPaciente paciente = new RegistroPaciente();
+            //AbrirFormEnPanel(paciente);
+        }
+
+        private void reconocimientoFacialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ReconocimientoFacial facial = new ReconocimientoFacial();
+            //AbrirFormEnPanel(facial);
+        }
+
+        private void Minimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void Maximizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+            Maximizar.Visible = false;
+            Restaurar.Visible = true;
+
+        }
+
+        private void Restaurar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+            Restaurar.Visible = false;
+            Maximizar.Visible = true;
+        }
+
+        private void Cerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+
+
+        }
+
+        private void menuArriba_Click(object sender, EventArgs e)
+        {
+            if (SideBar.Width == 270)
+            {
+                SideBar.Width = 68;
+                menuIzquierda.Width = 90;
+                lineaSeparator.Width = 52;
+
+
+            }
+            else
+            {
+                SideBar.Width = 270;
+                menuIzquierda.Width = 300;
+                lineaSeparator.Width = 252;
+            }
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
             RegistroPaciente paciente = new RegistroPaciente();
             AbrirFormEnPanel(paciente);
         }
 
-        private void reconocimientoFacialToolStripMenuItem_Click(object sender, EventArgs e)
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             ReconocimientoFacial facial = new ReconocimientoFacial();
             AbrirFormEnPanel(facial);
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            Mapa map = new Mapa();
-            AbrirFormEnPanel(map);
+            Mapa mapa = new Mapa();
+            AbrirFormEnPanel(mapa);
         }
-    
     }
 }
