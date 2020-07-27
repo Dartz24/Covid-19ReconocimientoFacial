@@ -359,7 +359,10 @@ namespace Covid_19ReconocimientoFacial
 
         private void cerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Application.Exit();
+            this.Close();
+            return;
+            //Application.Exit();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)

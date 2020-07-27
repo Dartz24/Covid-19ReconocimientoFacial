@@ -80,14 +80,14 @@
             this.MenuTOP.Dock = System.Windows.Forms.DockStyle.Top;
             this.MenuTOP.Location = new System.Drawing.Point(0, 0);
             this.MenuTOP.Name = "MenuTOP";
-            this.MenuTOP.Size = new System.Drawing.Size(1400, 100);
+            this.MenuTOP.Size = new System.Drawing.Size(1589, 100);
             this.MenuTOP.TabIndex = 1;
             // 
             // Restaurar
             // 
             this.Restaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Restaurar.Image = ((System.Drawing.Image)(resources.GetObject("Restaurar.Image")));
-            this.Restaurar.Location = new System.Drawing.Point(1306, 27);
+            this.Restaurar.Location = new System.Drawing.Point(1495, 27);
             this.Restaurar.Name = "Restaurar";
             this.Restaurar.Size = new System.Drawing.Size(30, 30);
             this.Restaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -100,7 +100,7 @@
             // 
             this.Maximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Maximizar.Image = ((System.Drawing.Image)(resources.GetObject("Maximizar.Image")));
-            this.Maximizar.Location = new System.Drawing.Point(1306, 27);
+            this.Maximizar.Location = new System.Drawing.Point(1495, 27);
             this.Maximizar.Name = "Maximizar";
             this.Maximizar.Size = new System.Drawing.Size(30, 30);
             this.Maximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,7 +112,7 @@
             // 
             this.Minimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Minimizar.Image = ((System.Drawing.Image)(resources.GetObject("Minimizar.Image")));
-            this.Minimizar.Location = new System.Drawing.Point(1270, 27);
+            this.Minimizar.Location = new System.Drawing.Point(1459, 27);
             this.Minimizar.Name = "Minimizar";
             this.Minimizar.Size = new System.Drawing.Size(30, 30);
             this.Minimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -124,7 +124,7 @@
             // 
             this.Cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Cerrar.Image = ((System.Drawing.Image)(resources.GetObject("Cerrar.Image")));
-            this.Cerrar.Location = new System.Drawing.Point(1342, 28);
+            this.Cerrar.Location = new System.Drawing.Point(1531, 28);
             this.Cerrar.Name = "Cerrar";
             this.Cerrar.Size = new System.Drawing.Size(30, 30);
             this.Cerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -160,7 +160,7 @@
             this.menuIzquierda.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuIzquierda.Location = new System.Drawing.Point(0, 100);
             this.menuIzquierda.Name = "menuIzquierda";
-            this.menuIzquierda.Size = new System.Drawing.Size(277, 800);
+            this.menuIzquierda.Size = new System.Drawing.Size(277, 795);
             this.menuIzquierda.TabIndex = 2;
             // 
             // SideBar
@@ -264,7 +264,7 @@
             this.bunifuFlatButton2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton2.BorderRadius = 0;
-            this.bunifuFlatButton2.ButtonText = "                      REGISTRO FACIAL";
+            this.bunifuFlatButton2.ButtonText = "RECONOCIMIENTO";
             this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -289,8 +289,8 @@
             this.bunifuFlatButton2.selected = false;
             this.bunifuFlatButton2.Size = new System.Drawing.Size(268, 60);
             this.bunifuFlatButton2.TabIndex = 9;
-            this.bunifuFlatButton2.Text = "                      REGISTRO FACIAL";
-            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton2.Text = "RECONOCIMIENTO";
+            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
@@ -301,7 +301,7 @@
             this.bunifuFlatButton1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton1.BorderRadius = 0;
-            this.bunifuFlatButton1.ButtonText = "                     REGISTRO";
+            this.bunifuFlatButton1.ButtonText = "REGISTRO FACIAL ";
             this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -326,8 +326,8 @@
             this.bunifuFlatButton1.selected = false;
             this.bunifuFlatButton1.Size = new System.Drawing.Size(268, 60);
             this.bunifuFlatButton1.TabIndex = 8;
-            this.bunifuFlatButton1.Text = "                     REGISTRO";
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton1.Text = "REGISTRO FACIAL ";
+            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
@@ -374,23 +374,22 @@
             this.presentacionCentro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.presentacionCentro.Location = new System.Drawing.Point(277, 100);
             this.presentacionCentro.Name = "presentacionCentro";
-            this.presentacionCentro.Size = new System.Drawing.Size(1123, 800);
+            this.presentacionCentro.Size = new System.Drawing.Size(1312, 795);
             this.presentacionCentro.TabIndex = 3;
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.panelContenedor.Location = new System.Drawing.Point(3, 3);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1108, 785);
+            this.panelContenedor.Size = new System.Drawing.Size(1303, 785);
             this.panelContenedor.TabIndex = 0;
             // 
             // FormMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1400, 900);
+            this.ClientSize = new System.Drawing.Size(1589, 895);
             this.Controls.Add(this.presentacionCentro);
             this.Controls.Add(this.menuIzquierda);
             this.Controls.Add(this.MenuTOP);
