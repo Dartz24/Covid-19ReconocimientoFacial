@@ -1,8 +1,10 @@
-﻿using Luxand;
+﻿using GMap.NET;
+using Luxand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Device.Location;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -15,6 +17,13 @@ using System.Threading.Tasks;
 using System.Web.Mail;
 using System.Windows.Forms;
 
+
+
+
+
+
+
+
 namespace Covid_19ReconocimientoFacial
 {
     public partial class ReconocimientoFacial : Form
@@ -23,7 +32,7 @@ namespace Covid_19ReconocimientoFacial
         {
             InitializeComponent();
         }
-
+        //GoogleDirections.Geocoder geocoder = new GoogleDirections.Geocoder("AIzaSyA73jLKeTcPvZFD0aHtSKW1v8lMldU_HQ8");
 
         #region Variables
 
@@ -548,6 +557,37 @@ namespace Covid_19ReconocimientoFacial
             Audio();
             Email();
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GeoCoordinateWatcher oWatcher = new GeoCoordinateWatcher();
+
+            oWatcher.PositionChanged += (S, E) =>
+            {
+                var oCoordinate = E.Position.Location;
+                textBox_nombre.Text = oCoordinate.Latitude.ToString();
+                textBox_apellido.Text = oCoordinate.Longitude.ToString();
+
+
+
+               //Geocoder ge = new Geocoder("AIzaSyA73jLKeTcPvZFD0aHtSKW1v8lMldU_HQ8");
+               // var address = ge.ReverseGeocode(new LatLng(51.408580, -0.292470));
+
+
+
+                // var result = await GoogleGeocodingAPI.GetCityFromCoordinatesAsync(11.1111, 22.2222);
+                //var city = result.Item1;
+                //var country = result.Item3;
+
+
+
+            };
+
+            oWatcher.Start();
+
+           
+
         }
     }
 }
