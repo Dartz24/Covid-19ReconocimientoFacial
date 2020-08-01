@@ -10,9 +10,7 @@ namespace Covid_19ReconocimientoFacial
    public class Usuario
     {
 
-
-
-
+//clases
         public int Id { get; set; }
         public string Cedula { get; set; }
         public string Nombre { get; set; }
