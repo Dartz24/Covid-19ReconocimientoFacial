@@ -344,6 +344,7 @@
             this.button3.TabIndex = 23;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBoxUbicacion
@@ -372,7 +373,7 @@
             this.pictureBox3.Image = global::Covid_19ReconocimientoFacial.Properties.Resources.photocamerafilledsymbolofthetoolincircularbutton_80318;
             this.pictureBox3.Location = new System.Drawing.Point(405, 657);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(103, 79);
+            this.pictureBox3.Size = new System.Drawing.Size(73, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 20;
             this.pictureBox3.TabStop = false;

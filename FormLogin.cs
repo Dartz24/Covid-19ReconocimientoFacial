@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocio;
 
+
 namespace Covid_19ReconocimientoFacial
 {
     public partial class FormLogin : Form
