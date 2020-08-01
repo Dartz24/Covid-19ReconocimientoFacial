@@ -114,5 +114,11 @@ namespace Covid_19ReconocimientoFacial
             Mapa mapa = new Mapa();
             AbrirFormEnPanel(mapa);
         }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            FormUsuarios usuarios = new FormUsuarios();
+            AbrirFormEnPanel(usuarios);
+        }
     }
 }
