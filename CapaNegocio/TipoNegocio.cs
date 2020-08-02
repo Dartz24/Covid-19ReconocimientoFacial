@@ -14,5 +14,21 @@ namespace CapaNegocio
         {
             return TipoDatos.ObtenerTiposUsuarios();
         }
+
+     
+
+
+        public static List<TipoPaciente> BuscarTipo(string texto)
+        {
+            List<TipoPaciente> tipos = new List<TipoPaciente>();
+
+            tipos = TipoDatos.BuscarTipo("%" + texto + "%");
+           
+            for (int i = 0; i < tipos.Count; i++)
+            {
+                //Clientes[i].VentaCabezeraEntidad = Facturar.BuscarServiciosAdquiridos(Clientes[i].Id);
+            }
+            return tipos;
+        }
     }
 }

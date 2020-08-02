@@ -8,7 +8,7 @@ namespace CapaEntidades
 {
     public class TipoEntidad
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string TipoUsuario { get; set; }
         public string Mensaje { get; set; }

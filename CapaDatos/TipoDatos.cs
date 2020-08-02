@@ -29,7 +29,7 @@ namespace CapaDatos
                     {
                         TipoEntidad tipo = new TipoEntidad
                         {
-                            Id = dr["id"].ToString(),
+                            Id =Convert.ToInt32( dr["id"].ToString()),
                             TipoUsuario = dr["tipousuario"].ToString()
                         };
                         lstTitulos.Add(tipo);
@@ -48,7 +48,7 @@ namespace CapaDatos
         }
 
 
-        internal static object ObtenerIdTipo(string TipoUsuario)
+       public static object ObtenerIdTipo(string TipoUsuario)
         {
             try
             {
@@ -81,6 +81,75 @@ namespace CapaDatos
             }
         }
 
+
+
+        public static object ObtenerTipo(int TipoUsuario)
+        {
+            try
+            {
+
+                string id = String.Empty;
+
+                SqlConnection conexion = new SqlConnection(Configuracion.Default.ConexionBD);
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conexion;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = @"SELECT * FROM EstadoPaciente WHERE id=@nombre";
+
+                cmd.Parameters.AddWithValue("@nombre", TipoUsuario);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        id = dr["id"].ToString();
+                    }
+                }
+
+                return id;
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+
+
+
+
+        public static List<TipoPaciente> BuscarTipo(string texto)
+        {
+            List<TipoPaciente> lista = new List<TipoPaciente>();
+            using (SqlConnection cn = new SqlConnection(Configuracion.Default.ConexionBD))
+            {
+                cn.Open();
+                string sql = @"SELECT [id]
+                                      ,[estado]
+                                  FROM [dbo].[EstadoPaciente]
+                    where id like @texto";
+                SqlCommand cmd = new SqlCommand(sql, cn);
+                cmd.Parameters.AddWithValue("@texto", texto);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(CargarTipo(reader));
+                }
+            }
+            return lista;
+        }
+
+        private static TipoPaciente CargarTipo(SqlDataReader reader)
+        {
+            TipoPaciente cliente = new TipoPaciente();
+            cliente.Id = Convert.ToInt32(reader["id"]);
+            cliente.TipoUsuario = Convert.ToString(reader["estado"]);
+
+            return cliente;
+        }
 
     }
 }

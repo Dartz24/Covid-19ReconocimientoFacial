@@ -19,12 +19,13 @@ namespace Covid_19ReconocimientoFacial
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public Image Imagen { get; set; }
+        public int IdTipo { get; set; }
 
         public Usuario()
         {
         }
 
-        public Usuario(string cedula, string nombre, string apellido, string telefono, string email, DateTime fechaNacimiento, Image imagen)
+        public Usuario(string cedula, string nombre, string apellido, string telefono, string email, DateTime fechaNacimiento, Image imagen, int idTipo)
         {
             Cedula = cedula;
             Nombre = nombre;
@@ -33,6 +34,7 @@ namespace Covid_19ReconocimientoFacial
             Email = email;
             FechaNacimiento = fechaNacimiento;
             Imagen = imagen;
+            IdTipo = idTipo;
         }
     }
 }

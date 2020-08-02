@@ -56,6 +56,7 @@ namespace Covid_19ReconocimientoFacial
             usuario.Email = textBox_emil.Text;
             usuario.Telefono = textBox_telefono.Text;
             usuario.FechaNacimiento = dateTimePicker_fechaNacimiento.Value;
+            usuario.IdTipo =Convert.ToInt32( comboBoxTipo.SelectedIndex.ToString());
 
             this.Close();
         }
@@ -94,16 +95,14 @@ namespace Covid_19ReconocimientoFacial
 
         }
 
-
-
-        private void CargarComboTipoUsuario()
+        private void CargarComboTipoPaciente()
         {
-            List<TipoPaciente> listaTipos = TipoNegocio.ObtenerTiposUsuarios();
+            List<TipoPaciente> listaTipos = TipoPacienNegocio.ObtenerTiposUsuarios();
             if (String.IsNullOrEmpty(listaTipos[0].Mensaje))
             {
                 comboBoxTipo.Items.Clear();
                 comboBoxTipo.Items.Add("---Seleccionar---");
-                foreach (TipoEntidad item in listaTipos)
+                foreach (TipoPaciente item in listaTipos)
                 {
                     comboBoxTipo.Items.Add(item.TipoUsuario);
                 }
@@ -111,6 +110,11 @@ namespace Covid_19ReconocimientoFacial
                 comboBoxTipo.SelectedIndex = 0;
 
             }
+        }
+
+        private void inputDatos_Load(object sender, EventArgs e)
+        {
+            CargarComboTipoPaciente();
         }
     }
 }

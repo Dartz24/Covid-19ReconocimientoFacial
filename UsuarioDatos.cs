@@ -30,6 +30,7 @@ namespace Covid_19ReconocimientoFacial
                                           ,[email]
                                           ,[fechaNacimiento]
                                           ,[imagen]
+                                          ,[estado]
                                       FROM [dbo].[Paciente]";
 
                 using (SqlDataReader reader = sql.ExecuteReader())
@@ -52,6 +53,7 @@ namespace Covid_19ReconocimientoFacial
                         usuario.Telefono = reader["telefono"].ToString();
                         usuario.Email = reader["email"].ToString();
                         usuario.FechaNacimiento = Convert.ToDateTime(reader["fechaNacimiento"]);
+                        usuario.IdTipo = Convert.ToInt32(reader["estado"].ToString());
                         usuario.Imagen = bit;
 
                         listaUsuarios.Add(usuario);
@@ -79,7 +81,8 @@ namespace Covid_19ReconocimientoFacial
                                                    ,[telefono]
                                                    ,[email]
                                                    ,[fechaNacimiento]
-                                                   ,[imagen])
+                                                   ,[imagen]
+                                                    ,[estado])
                                              VALUES
                                                    (@nombre
                                                    ,@apellido
@@ -87,7 +90,8 @@ namespace Covid_19ReconocimientoFacial
                                                    ,@telefono
                                                    ,@email
                                                    ,@fechaNacimiento
-                                                   ,@imagen);
+                                                   ,@imagen
+                                                    ,@estado);
                                             SELECT SCOPE_IDENTITY()";
 
                 sql.Parameters.AddWithValue("@nombre", usuario.Nombre);
@@ -96,6 +100,7 @@ namespace Covid_19ReconocimientoFacial
                 sql.Parameters.AddWithValue("@telefono", usuario.Telefono);
                 sql.Parameters.AddWithValue("@fechaNacimiento", usuario.FechaNacimiento);
                 sql.Parameters.AddWithValue("@email", usuario.Email);
+                sql.Parameters.AddWithValue("@estado", usuario.IdTipo);
 
                 MemoryStream ms = new MemoryStream();
                 usuario.Imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
@@ -142,6 +147,7 @@ namespace Covid_19ReconocimientoFacial
                                           ,[email] = @email
                                           ,[fechaNacimiento] = @fechaNacimiento
                                           ,[imagen] = @imagen
+                                              ,[estado] = @estado
                                     WHERE [id]=@id";
 
                 MemoryStream ms = new MemoryStream();
@@ -165,6 +171,7 @@ namespace Covid_19ReconocimientoFacial
                 sql.Parameters.AddWithValue("@email", usuario.Email);
                 sql.Parameters.AddWithValue("@fechaNacimiento", usuario.FechaNacimiento);
                 sql.Parameters.AddWithValue("@id", usuario.Id);
+                sql.Parameters.AddWithValue("@estado", usuario.IdTipo);
 
                 var identificador = Convert.ToInt32(sql.ExecuteNonQuery());
 

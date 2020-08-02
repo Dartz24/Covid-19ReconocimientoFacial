@@ -21,7 +21,7 @@ namespace CapaDatos
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexion;
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = @"SELECT * FROM TipoUsuarios";
+                cmd.CommandText = @"SELECT * FROM EstadoPaciente";
 
                 using (var dr = cmd.ExecuteReader())
                 {
@@ -29,8 +29,8 @@ namespace CapaDatos
                     {
                         TipoPaciente tipo = new TipoPaciente
                         {
-                            Id = dr["id"].ToString(),
-                            TipoUsuario = dr["tipousuario"].ToString()
+                            Id =Convert.ToInt32( dr["id"].ToString()),
+                            TipoUsuario = dr["Estado"].ToString()
                         };
                         lstTitulos.Add(tipo);
                     }
@@ -84,4 +84,4 @@ namespace CapaDatos
 
     }
 }
-}
+
