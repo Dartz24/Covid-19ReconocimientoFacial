@@ -1,8 +1,10 @@
-﻿using Luxand;
+﻿using GMap.NET;
+using Luxand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Device.Location;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -14,6 +16,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mail;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
+
+
+
+
+
+
+
 
 namespace Covid_19ReconocimientoFacial
 {
@@ -23,7 +34,7 @@ namespace Covid_19ReconocimientoFacial
         {
             InitializeComponent();
         }
-
+        //GoogleDirections.Geocoder geocoder = new GoogleDirections.Geocoder("AIzaSyA73jLKeTcPvZFD0aHtSKW1v8lMldU_HQ8");
 
         #region Variables
 
@@ -90,6 +101,9 @@ namespace Covid_19ReconocimientoFacial
             textBox_apellido.Text = usuario.Apellido;
             textBox_telefono.Text = usuario.Telefono;
             textBox_email.Text = usuario.Email;
+            textBoxP.Text = usuario.IdTipo.ToString();
+           // BuscarTiporId();
+
            
            
         }
@@ -102,6 +116,8 @@ namespace Covid_19ReconocimientoFacial
             textBox_apellido.Text = null;
             textBox_telefono.Text = null;
             textBox_email.Text = null;
+            textBoxP.Text = null;
+            comboBox1.DataSource =null;
         }
 
         private void Iniciar()
@@ -233,7 +249,12 @@ namespace Covid_19ReconocimientoFacial
                             usuario = BuscarUsuario(name);
                             CarcarCampos(usuario);
                             name = usuario.Nombre + " " + usuario.Apellido;
-                            
+                            if (textBoxP.Text == "")
+                            {
+                                return;
+                            }
+                            BuscarTiporId();
+
                         }
 
                         StringFormat format = new StringFormat();
@@ -338,6 +359,7 @@ namespace Covid_19ReconocimientoFacial
 
             FSDKCam.CloseVideoCamera(cameraHandle);
             FSDKCam.FinalizeCapturing();
+           // BuscarTiporId();
 
         }
 
@@ -514,6 +536,10 @@ namespace Covid_19ReconocimientoFacial
             sb.Append("<td>" + nombres+" </td>");
             sb.Append("  </tr>");
 
+            sb.Append("  <tr>");
+            sb.Append("<td>Estado del Paciente : </td>");
+            sb.Append("<td>" + comboBox1.Text + " </td>");
+            sb.Append("  </tr>");
 
             sb.Append("  <tr>");
             sb.Append("<td>MOTIVO: </td>");
@@ -547,6 +573,116 @@ namespace Covid_19ReconocimientoFacial
         {
             Audio();
             Email();
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GeoCoordinateWatcher oWatcher = new GeoCoordinateWatcher();
+
+            oWatcher.PositionChanged += (S, E) =>
+            {
+                var oCoordinate = E.Position.Location;
+                textBox_nombre.Text = oCoordinate.Latitude.ToString();
+                textBox_apellido.Text = oCoordinate.Longitude.ToString();
+
+
+
+               //Geocoder ge = new Geocoder("AIzaSyA73jLKeTcPvZFD0aHtSKW1v8lMldU_HQ8");
+               // var address = ge.ReverseGeocode(new LatLng(51.408580, -0.292470));
+
+
+
+                // var result = await GoogleGeocodingAPI.GetCityFromCoordinatesAsync(11.1111, 22.2222);
+                //var city = result.Item1;
+                //var country = result.Item3;
+
+
+
+            };
+
+            oWatcher.Start();
+
+           
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            usuario.Cedula = textBox_cedula.Text;
+            usuario.Nombre = textBox_nombre.Text;
+            usuario.Apellido = textBox_apellido.Text;
+            usuario.Email = textBox_email.Text;
+            usuario.Telefono = textBox_telefono.Text;
+            usuario.IdTipo = Convert.ToInt32(comboBox3.SelectedIndex.ToString());
+            usuario = UsuarioDatos.updateUsuario(usuario);
+            MessageBox.Show("Se Actualizado Correctamente");
+            button6.Visible = true;
+            button5.Visible = false;
+            comboBox1.Visible = true;
+            comboBox3.Visible = false;
+
+
+
+            //  this.Close();
+        }
+
+
+        private void CargarComboTipoPaciente()
+        {
+            
+            List<TipoPaciente> listaTipos = TipoPacienNegocio.ObtenerTiposUsuarios();
+            if (String.IsNullOrEmpty(listaTipos[0].Mensaje))
+            {
+                comboBox3.Items.Clear();
+                comboBox3.Items.Add("---Seleccionar---");
+                foreach (TipoPaciente item in listaTipos)
+                {
+                    comboBox3.Items.Add(item.TipoUsuario);
+                }
+
+                comboBox3.SelectedIndex = 0;
+
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CargarComboTipoPaciente();
+        }
+
+        public void BuscarTiporId() {
+            comboBox1.DataSource = null;
+            List<TipoPaciente> tipo = new List<TipoPaciente>();
+            string d;
+            d = textBoxP.Text;
+            tipo = TipoPacienNegocio.BuscarTipo(d);
+            comboBox1.DataSource = null;
+            comboBox1.DataSource = tipo;
+            comboBox1.DisplayMember = "TipoUsuario";
+            comboBox1.ValueMember = "id";
+        }
+        private void button7_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textBoxP_TextChanged(object sender, EventArgs e)
+        {
+            //if (textBoxP.Text == "")
+            //{
+            //   return;
+            //}
+            //BuscarTiporId();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            CargarComboTipoPaciente();
+            button5.Visible = true;
+            comboBox1.Visible = false;
+            comboBox3.Visible = true;
+            button6.Visible = false;
             
         }
     }

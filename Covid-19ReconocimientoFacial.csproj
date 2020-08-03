@@ -33,10 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\SeptimoSemestre\Design Dashboard Modern\Design Dashboard Modern\BUNIFU UI\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="FaceSDK.NET">
-      <HintPath>..\..\..\..\Desktop\FaceSDK.NET.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\SeptimoSemestre\FaceSDK.NET.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
@@ -44,9 +44,19 @@
     <Reference Include="GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
+    <Reference Include="Stony.GoogleMaps, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Stony.GoogleMaps.Geocoding.0.2.2\lib\Stony.GoogleMaps.dll</HintPath>
+    </Reference>
+    <Reference Include="Stony.GoogleMaps.Geocoding, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Stony.GoogleMaps.Geocoding.0.2.2\lib\Stony.GoogleMaps.Geocoding.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -75,6 +85,12 @@
     </Compile>
     <Compile Include="FormMenuPrincipal.Designer.cs">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarios.Designer.cs">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="inputDatos.cs">
       <SubType>Form</SubType>
@@ -109,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenuPrincipal.resx">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarios.resx">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="inputDatos.resx">
       <DependentUpon>inputDatos.cs</DependentUpon>
@@ -151,16 +170,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="CapaEntidades\CapaEntidades.csproj">
-      <Project>{742df143-75ba-4f23-bcb2-8e769109241e}</Project>
-      <Name>CapaEntidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="CapaNegocio\CapaNegocio.csproj">
-      <Project>{a2c5494f-4b34-44f7-9958-58fa3fa4ca6f}</Project>
-      <Name>CapaNegocio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Iconos\Businessman_48px.png" />
     <Content Include="Iconos\Close Window_ 2 48px.png" />
     <Content Include="Iconos\Combo Chart_64px.png" />
@@ -180,6 +189,16 @@
     <None Include="Resources\Minimize Window_2 48px.png" />
     <None Include="Resources\Maximize Window_2 48px.png" />
     <None Include="Resources\Close Window_ 2 48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="CapaEntidades\CapaEntidades.csproj">
+      <Project>{742df143-75ba-4f23-bcb2-8e769109241e}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="CapaNegocio\CapaNegocio.csproj">
+      <Project>{a2c5494f-4b34-44f7-9958-58fa3fa4ca6f}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

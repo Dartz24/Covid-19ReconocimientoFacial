@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Covid_19ReconocimientoFacial
 {
-   public class Usuario
+   public class PacientesEntidades
     {
 
-//clases
+
+
+
         public int Id { get; set; }
         public string Cedula { get; set; }
         public string Nombre { get; set; }
@@ -18,14 +20,15 @@ namespace Covid_19ReconocimientoFacial
         public string Telefono { get; set; }
         public string Email { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public Image Imagen { get; set; }
-        public int IdTipo { get; set; }
+        // public bit Imagen { get; set; }
 
-        public Usuario()
+        public Byte Imagen { get; set; }
+
+        public PacientesEntidades()
         {
         }
 
-        public Usuario(string cedula, string nombre, string apellido, string telefono, string email, DateTime fechaNacimiento, Image imagen, int idTipo)
+        public PacientesEntidades(string cedula, string nombre, string apellido, string telefono, string email, DateTime fechaNacimiento, Byte imagen)
         {
             Cedula = cedula;
             Nombre = nombre;
@@ -34,7 +37,6 @@ namespace Covid_19ReconocimientoFacial
             Email = email;
             FechaNacimiento = fechaNacimiento;
             Imagen = imagen;
-            IdTipo = idTipo;
         }
     }
 }

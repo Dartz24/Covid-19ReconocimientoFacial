@@ -14,5 +14,10 @@ namespace CapaNegocio
         {
             return UsuarioDatos.IniciarSesionDatos(text1, text2);
         }
+
+        public static UsuarioEntidad GuardarNuevoUsuario(UsuarioEntidad usuario)
+        {
+            return UsuarioDatos.GuardarNuevoUsuario(usuario);
+        }
     }
 }

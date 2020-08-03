@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace Covid_19ReconocimientoFacial
 {
@@ -54,6 +56,7 @@ namespace Covid_19ReconocimientoFacial
             usuario.Email = textBox_emil.Text;
             usuario.Telefono = textBox_telefono.Text;
             usuario.FechaNacimiento = dateTimePicker_fechaNacimiento.Value;
+            usuario.IdTipo =Convert.ToInt32( comboBoxTipo.SelectedIndex.ToString());
 
             this.Close();
         }
@@ -90,6 +93,28 @@ namespace Covid_19ReconocimientoFacial
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CargarComboTipoPaciente()
+        {
+            List<TipoPaciente> listaTipos = TipoPacienNegocio.ObtenerTiposUsuarios();
+            if (String.IsNullOrEmpty(listaTipos[0].Mensaje))
+            {
+                comboBoxTipo.Items.Clear();
+                comboBoxTipo.Items.Add("---Seleccionar---");
+                foreach (TipoPaciente item in listaTipos)
+                {
+                    comboBoxTipo.Items.Add(item.TipoUsuario);
+                }
+
+                comboBoxTipo.SelectedIndex = 0;
+
+            }
+        }
+
+        private void inputDatos_Load(object sender, EventArgs e)
+        {
+            CargarComboTipoPaciente();
         }
     }
 }

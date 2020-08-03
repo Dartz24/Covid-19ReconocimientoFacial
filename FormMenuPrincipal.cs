@@ -101,18 +101,26 @@ namespace Covid_19ReconocimientoFacial
         {
             RegistroPaciente paciente = new RegistroPaciente();
             AbrirFormEnPanel(paciente);
+           
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             ReconocimientoFacial facial = new ReconocimientoFacial();
             AbrirFormEnPanel(facial);
+      
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
             Mapa mapa = new Mapa();
             AbrirFormEnPanel(mapa);
+        }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            FormUsuarios usuarios = new FormUsuarios();
+            AbrirFormEnPanel(usuarios);
         }
     }
 }
